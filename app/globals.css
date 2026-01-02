@@ -1,0 +1,127 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Kode+Mono:wght@400..700&display=swap");
+
+/* ========================================
+   Fix horizontal scroll on mobile - ROOT
+   ======================================== */
+html,
+body {
+  overflow-x: clip !important;
+  width: 100% !important;
+  max-width: 100% !important;
+}
+
+/* Main wrapper fix */
+#__next,
+main {
+  overflow-x: hidden !important;
+  width: 100%;
+  max-width: 100%;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Override any 100vw that causes scrollbar issues */
+.vw-100,
+[class*="vw-"] {
+  max-width: 100% !important;
+}
+
+/* ========================================
+   Section overflow fixes
+   ======================================== */
+section,
+header,
+footer,
+.fix-area {
+  overflow-x: hidden !important;
+}
+
+/* ========================================
+   Slick slider fix
+   ======================================== */
+.slick-slider,
+.slick-list {
+  overflow: hidden !important;
+}
+
+/* ========================================
+   Header fixes
+   ======================================== */
+.header-top-section-3,
+.header-top-wrapper {
+  overflow-x: hidden !important;
+}
+
+@media (max-width: 991px) {
+
+  .header-top-wrapper .top-left,
+  .header-top-wrapper .top-right {
+    flex-wrap: wrap;
+  }
+
+  .contact-list {
+    flex-wrap: wrap;
+  }
+}
+
+/* ========================================
+   Mobile-specific overrides
+   ======================================== */
+@media (max-width: 767px) {
+  .case-study-wrapper {
+    padding: 0 15px !important;
+  }
+
+  .counter-wrapper-2 {
+    padding: 40px 15px !important;
+  }
+
+  .cta-chat-wrapper {
+    padding: 40px 15px !important;
+  }
+
+  .container-fluid {
+    padding-left: 15px !important;
+    padding-right: 15px !important;
+  }
+}
+
+/* ========================================
+   Container constraints
+   ======================================== */
+.container,
+.container-fluid {
+  max-width: 100% !important;
+  overflow-x: hidden !important;
+}
+
+/* Force all images to respect container */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Fix marquee section that uses 200% width */
+.marquee-wrapper {
+  overflow: hidden !important;
+}
+
+/* image popup */
+img.mfp-img {
+  box-shadow: 0 0 8px rgb(0 0 0 / 60%);
+  position: absolute;
+  max-height: 392px;
+  padding: 0 !important;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.mfp-img-container .mfp-close {
+  top: -110px;
+  right: -24px;
+}
