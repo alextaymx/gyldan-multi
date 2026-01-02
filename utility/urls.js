@@ -3,30 +3,32 @@
 // Check if we're in development mode
 const isDevelopment = process.env.NODE_ENV === 'development';
 
-// Base domain for production
-const PRODUCTION_DOMAIN = 'gyldan.my';
+// Base domain for production (set via env var or default to path-based)
+const PRODUCTION_DOMAIN = process.env.NEXT_PUBLIC_DOMAIN || '';
+
+// Use subdomains only if a custom domain is configured
+const useSubdomains = !!PRODUCTION_DOMAIN;
 
 /**
  * Get the URL for the main domain
  */
 export const getMainUrl = () => {
-    if (isDevelopment) {
-        return '/';
-    }
-    return `https://${PRODUCTION_DOMAIN}`;
+  if (isDevelopment || !useSubdomains) {
+    return '/';
+  }
+  return `https://${PRODUCTION_DOMAIN}`;
 };
 
 /**
  * Get the URL for a brand subdomain
- * In development: uses path-based routing (/brand/[subdomain])
- * In production: uses actual subdomains
+ * Uses path-based routing unless a custom domain is set
  */
 export const getSubdomainUrl = (subdomain) => {
-    if (isDevelopment) {
-        // In development, use path-based routing
-        return `/brand/${subdomain}`;
-    }
-    return `https://${subdomain}.${PRODUCTION_DOMAIN}`;
+  if (isDevelopment || !useSubdomains) {
+    // Use path-based routing
+    return `/brand/${subdomain}`;
+  }
+  return `https://${subdomain}.${PRODUCTION_DOMAIN}`;
 };
 
 /**
